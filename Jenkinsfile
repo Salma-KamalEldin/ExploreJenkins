@@ -2,6 +2,8 @@ pipeline {
     agent any
 
     stages {
+        options { disableConcurrentBuilds(abortPrevious: true) }
+        
         stage('Build') {
             steps {
                 echo "Building ${env.BRANCH_NAME}"
