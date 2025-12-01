@@ -16,6 +16,13 @@ pipeline {
                 echo "Running tests on ${env.BRANCH_NAME}"
             }
         }
+        stage('Long Task') {
+            steps {
+                echo "Starting long job…"
+                sleep time: 5, unit: 'MINUTES'
+                echo "Long job finished."
+            }
+        }
     }
 
     post {
