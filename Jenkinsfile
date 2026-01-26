@@ -5,7 +5,11 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building ${env.BRANCH_NAME}"
-                echo "Building ${env}"
+                script {
+                env.getEnvironment().each { k, v ->
+                    echo "${k}=${v}"
+                }
+            }
             }
         }
 
