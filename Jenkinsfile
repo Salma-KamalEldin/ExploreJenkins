@@ -4,7 +4,11 @@ pipeline {
     stages {
         stage('Debug Env') {
             steps {
-                sh 'env | sort'
+                script {
+                    echo "Current Branch: ${env.BRANCH_NAME}"
+                    echo "Build Number: ${env.BUILD_NUMBER}"
+                    echo "Workspace: ${env.WORKSPACE}"
+                }
             }
         }
 
