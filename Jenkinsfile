@@ -3,14 +3,15 @@ pipeline {
 
     stages {
         stage('Build') {
-                steps {
-                    sh '''
+            steps {
+                sh '''
                     echo "USER=$(whoami)"
                     echo "PWD=$(pwd)"
                     echo "WORKSPACE=$WORKSPACE"
                     echo "JENKINS_HOME=$JENKINS_HOME"
-                    '''
-                }
+                    echo "---- ALL ENV (sorted) ----"
+                    printenv | sort
+                '''
             }
         }
 
@@ -30,4 +31,3 @@ pipeline {
         }
     }
 }
-
