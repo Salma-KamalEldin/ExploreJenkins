@@ -3,13 +3,14 @@ pipeline {
 
     stages {
         stage('Build') {
-            steps {
-                echo "Building ${env.BRANCH_NAME}"
-                script {
-                env.getEnvironment().each { k, v ->
-                    echo "${k}=${v}"
+                steps {
+                    sh '''
+                    echo "USER=$(whoami)"
+                    echo "PWD=$(pwd)"
+                    echo "WORKSPACE=$WORKSPACE"
+                    echo "JENKINS_HOME=$JENKINS_HOME"
+                    '''
                 }
-            }
             }
         }
 
