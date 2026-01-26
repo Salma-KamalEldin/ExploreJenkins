@@ -2,16 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Debug Env') {
             steps {
-                sh '''
-                    echo "USER=$(whoami)"
-                    echo "PWD=$(pwd)"
-                    echo "WORKSPACE=$WORKSPACE"
-                    echo "JENKINS_HOME=$JENKINS_HOME"
-                    echo "---- ALL ENV (sorted) ----"
-                    printenv | sort
-                '''
+                sh 'env | sort'
             }
         }
 
