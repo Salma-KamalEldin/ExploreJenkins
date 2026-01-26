@@ -5,10 +5,12 @@ pipeline {
         stage('Debug Env') {
             steps {
                 script {
-                    echo "Current Branch: ${env.BRANCH_NAME}"
-                    echo "Build Number: ${env.BUILD_NUMBER}"
-                    echo "Workspace: ${env.WORKSPACE}"
-                }
+                // Using square brackets avoids calling the restricted 'getEnvironment' method directly
+                echo "Current Branch: ${env['BRANCH_NAME']}"
+                echo "Build Number: ${env['BUILD_NUMBER']}"
+                echo "Workspace: ${env['WORKSPACE']}"
+            }
+
             }
         }
 
